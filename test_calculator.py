@@ -32,7 +32,7 @@ def test_add(calc, a, b, expected):
     "a, b, expected",
     [(5, 3, 2), (10, 20, -10), (-5, -5, 0), (10, 1, 9), (2.5, 1.5, 1.0)],
 )
-def test_subtact(calc, a, b, expected):
+def test_subtract(calc, a, b, expected):
     assert calc.subtract(a, b) == expected
 
 
@@ -69,13 +69,13 @@ def test_divide(calc, a, b, expected):
     [(2, 3, 8), (5, 0, 1), (3, 2, 9), (4, 0.5, 2.0), (10, -1, 0.1)],
 )
 def test_power(calc, base, exp, expected):
-    assert calc.power(base, exp) == expected
+    assert calc.power(base, exp) == pytest.approx(expected)
 
 
 # --------------------------------------------------------------------------------------------
 # Exception tests
 # --------------------------------------------------------------------------------------------
-def test_devide_by_zero(calc):
+def test_divide_by_zero(calc):
     with pytest.raises(ValueError, match="Division by zero"):
         calc.divide(5, 0)
 
