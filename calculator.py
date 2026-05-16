@@ -12,7 +12,7 @@ class Calculator:
     def __init__(self) -> None:
         self._history: list[Tuple[str, Number, Number, Number]] = []
 
-    def _validdate_numbers(self, *args: Number) -> None:
+    def _validate_numbers(self, *args: Number) -> None:
         """
         Raise TypeError if any argument is not a number."""
         for arg in args:
@@ -20,25 +20,25 @@ class Calculator:
                 raise TypeError(f"Expected number, got {type(arg).__name__}: {arg}")
 
     def add(self, a: Number, b: Number) -> Number:
-        self._validdate_numbers(a, b)
+        self._validate_numbers(a, b)
         result = a + b
         self._history.append(("add", a, b, result))
         return result
 
     def subtract(self, a: Number, b: Number) -> Number:
-        self._validdate_numbers(a, b)
+        self._validate_numbers(a, b)
         result = a - b
         self._history.append(("subtract", a, b, result))
         return result
 
     def multiply(self, a: Number, b: Number) -> Number:
-        self._validdate_numbers(a, b)
+        self._validate_numbers(a, b)
         result = a * b
         self._history.append(("multiply", a, b, result))
         return result
 
     def divide(self, a: Number, b: Number) -> float:
-        self._validdate_numbers(a, b)
+        self._validate_numbers(a, b)
         if b == 0:
             raise ValueError("Division by zero is not allowed")
         result = a / b
@@ -46,7 +46,7 @@ class Calculator:
         return result
 
     def power(self, base: Number, exp: Number) -> Number:
-        self._validdate_numbers(base, exp)
+        self._validate_numbers(base, exp)
         result = base**exp
         self._history.append(("power", base, exp, result))
         return result
