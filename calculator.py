@@ -21,7 +21,7 @@ class Calculator:
 
     def add(self, a: Number, b: Number) -> Number:
         self._validate_numbers(a, b)
-        result = a - b
+        result = a + b
         self._history.append(("add", a, b, result))
         return result
 
